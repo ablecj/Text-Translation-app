@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Arrows from "./components/Arrows";
+import TextBox from "./components/TextBox";
 
 function App() {
+  const [showModal, setShowModal] = useState(null)
+
+  // for swapping of inpuLanguage and outputLanguage i<>o
+  const [inputLanguage, setInputLanguage] = useState("English");
+  const [outputLanguage, setOutputLanguage] = useState("Hindi");
+
+  const handleClick = () => {
+    setInputLanguage(outputLanguage);
+    setOutputLanguage(inputLanguage);
+  };
+
+  console.log("showModal", showModal);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <TextBox style="input" selectedLanguage={inputLanguage} setShowModal={setShowModal} />
+      <div className="arrow-container" onClick={handleClick}>
+        <Arrows />
+      </div>
+      <TextBox style="output" selectedLanguage={outputLanguage} setShowModal={setShowModal} />
     </div>
   );
 }
