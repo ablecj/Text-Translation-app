@@ -1,9 +1,13 @@
 import React from 'react'
 
 const SelectDropDown = ({selectedLanguage, style, setShowModal}) => {
+  
   return (
+    
     <div className='select-drop-down' onClick={()=>setShowModal(style)}>
+
       <input value={selectedLanguage} />
+       
       <div className="down-arrow">
       <svg
           focusable="false"
@@ -12,7 +16,9 @@ const SelectDropDown = ({selectedLanguage, style, setShowModal}) => {
         >
           <path d="M7 10l5 5 5-5z"></path>
         </svg>
-      </div>
+      </div> 
+     
+     
     </div>
   )
 }
